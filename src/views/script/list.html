@@ -1,0 +1,420 @@
+<title>话术管理</title>
+
+
+
+<div class="layui-card layadmin-header">
+
+  <div class="layui-breadcrumb" lay-filter="breadcrumb">
+
+    <a lay-href="">主页</a>
+
+    <a><cite>话术</cite></a>
+
+    <a><cite>话术管理</cite></a>
+
+  </div>
+
+</div>
+
+
+
+<div class="layui-fluid">
+
+  <div class="layui-card">
+
+    <div class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="LAY-list">
+
+      <div class="layui-form-item">
+
+        <div class="layui-inline">
+
+          <label class="layui-form-label">按问题搜索</label>
+
+          <div class="layui-input-inline">
+
+            <input type="text" name="id" placeholder="请输入" autocomplete="off" class="layui-input" id="lay-list-id">
+
+          </div>
+
+        </div>
+
+        <div class="layui-inline">
+
+          <label class="layui-form-label">按答案搜索</label>
+
+          <div class="layui-input-inline">
+
+            <input type="text" name="author" placeholder="请输入" autocomplete="off" class="layui-input"
+              id="lay-list-author">
+
+          </div>
+
+        </div>
+
+        <div class="layui-inline">
+
+          <button class="layui-btn layuiadmin-btn-list" lay-submit lay-filter="LAY-app-search" data-type="search">
+
+            <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="layui-card-body">
+
+      <div style="padding-bottom: 10px;">
+
+        <button class="layui-btn layuiadmin-btn-list" data-type="batchdel">删除</button>
+
+        <button class="layui-btn layuiadmin-btn-list" data-type="add">添加多人对话</button>
+        <button class="layui-btn layuiadmin-btn-list" data-type="add-multiple">添加双人对话</button>
+
+      </div>
+
+      <table id="LAY-script-list" lay-filter="LAY-script-list"></table>
+
+      <script type="text/html" id="askHandle">
+        {{# return d.problem.replace(new RegExp(/[#|\(|\)|（|）]/g),'') }}
+      </script>
+      <script type="text/html" id="answerHandle">
+        {{# return d.answer }}
+      </script>
+
+      <script type="text/html" id="table-content-list">
+        <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"><i
+            class="layui-icon layui-icon-edit"></i>编辑</a>
+
+        <!-- <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i
+            class="layui-icon layui-icon-delete"></i>删除</a> -->
+      </script>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<script>
+  layui.use('script', layui.factory('script')).use(['admin', 'script', 'table', 'common'], function () {
+
+    var $ = layui.$
+
+      ,
+      admin = layui.admin
+
+      ,
+      view = layui.view
+
+      ,
+      table = layui.table
+
+      ,
+      form = layui.form
+
+      ,
+      com = layui.common
+
+
+    form.render(null, 'LAY-list');
+
+
+    //监听搜索
+
+    form.on('submit(LAY-app-search)', function (data) {
+
+      var field = data.field;
+
+      console.log(field)
+      com.ajax({
+        url: layui.setter.ajaxUrl + 'dialogue/search',
+        type: 'get',
+        data: {
+          answer: field.author,
+          problem: field.id,
+          token: layui.data('data').token
+        },
+        success(res) {
+          console.log(res);
+          if (res.code == 200) {
+            //执行重载
+
+            table.render({
+              elem: '#LAY-script-list',
+              data: res.data,
+
+              cols: [
+                [{
+                  type: 'checkbox',
+                  fixed: 'left'
+                }, {
+                  field: 'sort',
+                  width: 80,
+                  title: '排序',
+                  sort: true
+                }, {
+                  field: 'problem',
+                  title: '问题',
+                  templet: '#askHandle'
+
+                }, {
+                  field: 'answer',
+                  title: '答案',
+                }, {
+                  field: 'scene',
+                  title: '场景'
+                }, {
+                  field: 'probability',
+                  title: '概率(百分比)'
+                }, {
+                  field: 'contCategory',
+                  title: '内容类别'
+                }, {
+                  field: 'author',
+                  title: '发布者'
+                }, {
+                  field: 'uploadTime',
+                  title: '发布时间',
+                  sort: true
+                }, {
+                  title: '操作',
+                  minWidth: 150,
+                  align: 'center',
+                  fixed: 'right',
+                  toolbar: '#table-content-list'
+                }]
+              ],
+              page: true,
+              limit: 10,
+              limits: [10, 15, 20, 25, 30],
+              text: '对不起，加载出现异常！'
+            });
+          } else {
+            layer.msg('搜索失败，请重试');
+          }
+        },
+        error(err) {
+          console.log(err);
+        }
+      });
+
+
+
+    });
+
+
+
+    var active = {
+      search() {
+        //提交 Ajax 成功后，关闭当前弹层并重载表格
+
+
+
+      },
+      batchdel: function () {
+
+          var checkStatus = table.checkStatus('LAY-script-list')
+
+            ,
+            checkData = checkStatus.data; //得到选中的数据
+
+
+
+          if (checkData.length === 0) {
+
+            return layer.msg('请选择数据');
+
+          }
+
+
+
+          layer.confirm('确定删除吗？', function (index) {
+
+
+
+            //执行 Ajax 后重载
+
+            /*
+
+            admin.req({
+
+              url: 'xxx'
+
+              //,……
+
+            });
+
+            */
+
+            table.reload('LAY-script-list');
+
+            layer.msg('已删除');
+
+          });
+
+        }
+
+
+
+        //添加
+
+        ,
+      add: function (othis) {
+
+        admin.popup({
+
+          title: '添加多人对话话术'
+
+            ,
+          area: ['550px', '550px']
+
+            ,
+          id: 'addScript'
+
+            ,
+          success: function (layero, index) {
+
+            view(this.id).render('script/listform').done(function () {
+
+              form.render(null, 'layuiadmin-list-form');
+
+
+
+              //监听提交
+
+              form.on('submit(formSubmit)', function (data) {
+
+                var field = data.field; //获取提交的字段
+
+
+
+
+
+                //提交 Ajax 成功后，关闭当前弹层并重载表格
+
+                //$.ajax({});
+
+                layui.table.reload('LAY-script-list'); //重载表格
+
+                layer.close(index); //执行关闭
+
+              });
+
+            });
+
+          }
+
+        });
+
+      },
+      "add-multiple": function (othis) {
+
+        admin.popup({
+
+          title: '添加双人对话话术'
+
+            ,
+          area: ['550px', '550px']
+
+            ,
+          id: 'addScript'
+
+            ,
+          success: function (layero, index) {
+
+            view(this.id).render('script/listform-1').done(function () {
+
+              form.render(null, 'layuiadmin-list-form');
+
+
+
+              //监听提交
+
+              form.on('submit(formSubmit)', function (data) {
+
+                var field = data.field; //获取提交的字段
+
+                var data = {
+                  "answer": "",
+                  "probability": "",
+                  "problem": "#(" + field.problem + ")",
+                  "token": layui.data('data').token
+                }
+                var answer = [];
+                var probability = [];
+                for (let key in field) {
+                  if (field.hasOwnProperty(key)) {
+                    var el = field[key];
+                    if (/answer[0-9]-type/.test(key)) {
+                      probability[key.replace(/[^0-9]/ig, "")] = el;
+                    } else if (/answer[0-9]/.test(key)) {
+                      answer[key.replace(/[^0-9]/ig, "")] = el;
+                    }
+                  }
+                }
+                data.answer = answer.join(",");
+                data.probability = probability.join(",");
+
+
+                //提交 Ajax 成功后，关闭当前弹层并重载表格
+                com.ajax({
+                  url: layui.setter.ajaxUrl + 'dialogue/add',
+                  type: 'post',
+                  data: data,
+                  success(res) {
+                    if (res.data == 1) {
+                      layer.msg('添加成功');
+                      layui.table.reload('LAY-script-list'); //重载表格
+                    } else {
+                      layer.msg('添加失败，请重试');
+                    }
+                    layer.close(index); //执行关闭
+                  },
+                  error(err) {
+                    console.log(err);
+                  }
+                });
+
+
+
+
+                //提交 Ajax 成功后，关闭当前弹层并重载表格
+
+                //$.ajax({});
+
+                layui.table.reload('LAY-script-list'); //重载表格
+
+                layer.close(index); //执行关闭
+
+              });
+
+            });
+
+          }
+
+        });
+      }
+
+    };
+
+
+
+    $('.layui-btn.layuiadmin-btn-list').on('click', function () {
+
+      var type = $(this).data('type');
+      active[type] ? active[type].call(this) : '';
+
+    });
+
+
+
+  });
+</script>

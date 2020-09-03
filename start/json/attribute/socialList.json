@@ -1,0 +1,21 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": "2",
+  "data": [
+    {
+      "id": "1",
+      "name": "沟通力",
+      "author": "程思琦",
+      "uploadtime": 20200722,
+      "status": true
+    },
+    {
+      "id": "2",
+      "name": "亲和力",
+      "author": "程思琦",
+      "uploadtime": 20200722,
+      "status": false
+    }
+  ]
+}

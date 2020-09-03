@@ -1,0 +1,29 @@
+{
+  "code": 200,
+  "msg": "",
+  "count": "2",
+  "data": [
+    {
+      "id": 1,
+      "sort": 1,
+      "ask": "早上好呀",
+      "answer": ["早上好","好呀好呀"],
+      "scene": "单聊",
+      "character": "开朗",
+      "contCategory": "生活",
+      "author": "程思琦",
+      "uploadTime": "2020-7-23"
+    },
+    {
+      "id": 2,
+      "sort": 2,
+      "ask": "你想我了么",
+      "answer": ["我贼想你"],
+      "scene": "单聊",
+      "character": "开朗",
+      "contCategory": "情感",
+      "author": "程思琦",
+      "uploadTime": "2020-7-23"
+    }
+  ]
+}

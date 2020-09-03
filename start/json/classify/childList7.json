@@ -1,0 +1,27 @@
+{
+  "code": 200,
+  "msg": "",
+  "count": "2",
+  "data": [
+    {
+      "id": 8,
+      "sort": 1,
+      "parentClass": "嘴巴",
+      "className": "上嘴唇",
+      "publisher": "程思琦",
+      "level": 4,
+      "updateTime": "2020-7-23",
+      "childNum": 0
+    },{
+      "id": 9,
+      "sort": 2,
+      "parentClass": "嘴巴",
+      "className": "下嘴唇",
+      "publisher": "程思琦",
+      "level": 4,
+      "updateTime": "2020-7-23",
+      "childNum": 0
+    }
+  ]
+}
+

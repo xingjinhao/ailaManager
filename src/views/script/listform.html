@@ -1,0 +1,330 @@
+<div class="layui-form" lay-filter="layuiadmin-list-form" id="layuiadmin-app-form-list" style="padding: 20px 30px 0 0;">
+
+    <div class="layui-form-item">
+
+        <label class="layui-form-label">排序</label>
+
+        <div class="layui-input-inline">
+
+            <script type="text/html" template>
+
+                <input type="text" name="sort" value="{{ d.params.sort || '' }}" lay-verify="required" placeholder="请输入序号" autocomplete="off" class="layui-input">
+
+            </script>
+
+        </div>
+
+    </div>
+
+    <div class="layui-form-item">
+
+        <label class="layui-form-label">场景</label>
+
+        <div class="layui-input-inline">
+
+            <script type="text/html" template>
+
+                <select name="scene" lay-verify="required">
+
+                    <option value="">请选择标签</option>
+
+                    <option value="自言自语" {{ d.params.scene==='自言自语' ? 'selected' : '' }}>自言自语</option>
+
+                    <option value="单聊" {{ d.params.scene==='单聊' ? 'selected' : '' }}>单聊</option>
+
+                    <option value="倾诉" {{ d.params.scene==='倾诉' ? 'selected' : '' }}>倾诉</option>
+
+                    <option value="群聊" {{ d.params.scene==='群聊' ? 'selected' : '' }}>群聊</option>
+
+                    <option value="单聊加群聊" {{ d.params.scene==='单聊加群聊' ? 'selected' : '' }}>单聊加群聊</option>
+
+                </select>
+
+            </script>
+
+        </div>
+
+    </div>
+
+    <div class="layui-form-item">
+
+        <label class="layui-form-label">精灵性格</label>
+
+        <div class="layui-input-inline">
+
+            <script type="text/html" template>
+
+                <select name="character" lay-verify="required">
+
+                    <option value="">请选择标签</option>
+
+                    <option value="开朗" {{ d.params.character==='开朗' ? 'selected' : '' }}>开朗</option>
+
+                    <option value="阴险" {{ d.params.character==='阴险' ? 'selected' : '' }}>阴险</option>
+
+                </select>
+
+            </script>
+
+        </div>
+
+    </div>
+
+    <div class="layui-form-item">
+
+        <label class="layui-form-label">内容类别</label>
+
+        <div class="layui-input-inline">
+
+            <script type="text/html" template>
+
+                <select name="contCategory" lay-verify="required">
+
+                    <option value="">请选择标签</option>
+
+                    <option value="生活" {{ d.params.contCategory==='生活' ? 'selected' : '' }}>生活</option>
+
+                    <option value="情感" {{ d.params.contCategory==='情感' ? 'selected' : '' }}>情感</option>
+
+                </select>
+
+            </script>
+
+        </div>
+
+    </div>
+
+    <div class="layui-form-item">
+
+        <label class="layui-form-label">问</label>
+
+        <div class="layui-input-inline">
+
+            <script type="text/html" template>
+
+                <input type="text" name="problem" value="{{ d.params.problem || '' }}" lay-verify="required" placeholder="请输入问题" autocomplete="off" class="layui-input">
+
+            </script>
+
+        </div>
+
+    </div>
+
+    <div class="layui-form-item" lay-filter="sex">
+
+        <label class="layui-form-label">提问角色</label>
+
+        <div class="layui-input-block">
+
+            <script type="text/html" template>
+
+                <input type="radio" name="askRole" value="主人" title="主人" {{ d.params.askRole === '主人' ? 'checked' : '' }}>
+
+                <input type="radio" name="askRole" value="精灵" title="精灵" {{ d.params.askRole === '精灵' ? 'checked' : '' }}>
+
+                <input type="radio" name="askRole" value="旁人" title="旁人" {{ d.params.askRole === '旁人' ? 'checked' : '' }}>
+
+            </script>
+
+        </div>
+
+    </div>
+
+
+
+    <!--回答块-->
+
+    <div id="answerBox">
+
+        <div class="layui-form-item" style="display: flex;align-items: center">
+
+            <label class="layui-form-label">答</label>
+
+            <div class="layui-input-inline">
+
+                <script type="text/html" template>
+
+                    <input type="text" name="answer0" value="{{ d.params.answer || '' }}" lay-verify="required" placeholder="请输入答案" autocomplete="off" class="layui-input">
+
+                </script>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <div class="layui-form-item" lay-filter="sex">
+
+        <label class="layui-form-label">回答角色</label>
+
+        <div class="layui-input-block">
+
+            <script type="text/html" template>
+
+                <input type="radio" name="answerRole" value="主人" title="主人" {{ d.params.sex === '主人' ? 'checked' : '' }}>
+
+                <input type="radio" name="answerRole" value="精灵" title="精灵" {{ d.params.sex === '精灵' ? 'checked' : '' }}>
+
+                <input type="radio" name="answerRole" value="旁人" title="旁人" {{ d.params.sex === '旁人' ? 'checked' : '' }}>
+
+            </script>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <!--插话块-->
+
+    <div id="interposeBox">
+
+        <div class="layui-form-item" style="display: flex;align-items: center">
+
+            <label class="layui-form-label">插话</label>
+
+            <div class="layui-input-inline">
+
+                <script type="text/html" template>
+
+                    <input type="text" name="interpose0" value="{{ d.params.interpose || '' }}" lay-verify="required" placeholder="请输入插话" autocomplete="off" class="layui-input">
+
+                </script>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <div class="layui-form-item" lay-filter="sex">
+
+        <label class="layui-form-label">插话角色</label>
+
+        <div class="layui-input-block">
+
+            <script type="text/html" template>
+
+                <input type="radio" name="interposeRole" value="主人" title="主人" {{ d.params.sex === '主人' ? 'checked' : '' }}>
+
+                <input type="radio" name="interposeRole" value="精灵" title="精灵" {{ d.params.sex === '精灵' ? 'checked' : '' }}>
+
+                <input type="radio" name="interposeRole" value="旁人" title="旁人" {{ d.params.sex === '旁人' ? 'checked' : '' }}>
+
+            </script>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <!--添加按钮-->
+
+    <div class="layui-form-item" >
+
+        <label class="layui-form-label"></label>
+
+        <button id="addAnswer" type="button" class="layui-btn layui-btn-sm" style="margin-left: 10px">
+
+            <i class="layui-icon">&#xe654;</i>添加回答
+
+        </button>
+
+        <button id="addInterpose" type="button" class="layui-btn layui-btn layui-btn-normal layui-btn-sm" style="margin-left: 10px">
+
+            <i class="layui-icon">&#xe654;</i>添加插话
+
+        </button>
+
+    </div>
+
+
+
+    <script type="text/html" template>
+
+        <input type="hidden" name="id" value="{{ d.params.id || '' }}">
+
+    </script>
+
+    <div class="layui-form-item">
+
+        <label class="layui-form-label"></label>
+
+        <div class="layui-input-inline">
+
+            <input type="button" lay-submit lay-filter="formSubmit" value="确认" class="layui-btn">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+    layui.use('script', layui.factory('script')).use(['admin', 'script', 'table'], function () {
+
+        var $ = layui.$
+
+            , admin = layui.admin
+
+            , view = layui.view
+
+            , table = layui.table
+
+            , form = layui.form;
+
+
+
+        let answerNum = 0
+
+            , interposeNum = 0
+
+        ;
+
+
+
+
+
+        // 添加答案
+
+        $('#addAnswer').click(function () {
+
+            answerNum++;
+
+            $('#answerBox').append(`<div class="layui-form-item" style="display: flex;align-items: center"><label class="layui-form-label">答</label><div class="layui-input-inline"><input type="text" name="answer${answerNum}" value="" lay-verify="required" placeholder="请输入答案" autocomplete="off" class="layui-input"></div></div>`);
+
+        })
+
+
+
+        // 添加插话
+
+        $('#addInterpose').click(function () {
+
+            $('#interposeBox').append(`<div class="layui-form-item" style="display: flex;align-items: center"><label class="layui-form-label">插话</label><div class="layui-input-inline"><input type="text" name="answer${interposeNum}" value="" lay-verify="required" placeholder="请输入答案" autocomplete="off" class="layui-input"></div></div>`);
+
+            interposeNum++;
+
+        })
+
+    })
+
+</script>
+

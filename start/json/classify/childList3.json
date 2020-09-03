@@ -1,0 +1,36 @@
+{
+  "code": 200,
+  "msg": "",
+  "count": "2",
+  "data": [
+    {
+      "id": 5,
+      "sort": 1,
+      "parentClass": "头部",
+      "className": "眼睛",
+      "publisher": "程思琦",
+      "level": 3,
+      "updateTime": "2020-7-23",
+      "childNum": 0
+    },{
+      "id": 6,
+      "sort": 2,
+      "parentClass": "头部",
+      "className": "鼻子",
+      "publisher": "程思琦",
+      "level": 3,
+      "updateTime": "2020-7-23",
+      "childNum": 0
+    },{
+      "id": 7,
+      "sort": 3,
+      "parentClass": "头部",
+      "className": "嘴巴",
+      "publisher": "程思琦",
+      "level": 3,
+      "updateTime": "2020-7-23",
+      "childNum": 2
+    }
+  ]
+}
+

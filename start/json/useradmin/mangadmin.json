@@ -1,0 +1,19 @@
+{
+  "code": 200,
+  "msg": "",
+  "count": "100",
+  "data": [
+    {
+      "id": 0,
+      "nickname": "程",
+      "name": "程思琦",
+      "role": 0
+    },
+    {
+      "id": 1,
+      "nickname": "橙",
+      "name": "大橙子",
+      "role": 1
+    }
+  ]
+}

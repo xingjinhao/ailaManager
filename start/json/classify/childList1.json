@@ -1,0 +1,27 @@
+{
+  "code": 200,
+  "msg": "",
+  "count": "2",
+  "data": [
+    {
+      "id": 3,
+      "sort": 1,
+      "parentClass": "人",
+      "className": "头部",
+      "publisher": "程思琦",
+      "level": 2,
+      "updateTime": "2020-7-23",
+      "childNum": 2
+    },{
+      "id": 4,
+      "sort": 2,
+      "parentClass": "人",
+      "className": "躯干",
+      "publisher": "程思琦",
+      "level": 2,
+      "updateTime": "2020-7-23",
+      "childNum": 0
+    }
+  ]
+}
+

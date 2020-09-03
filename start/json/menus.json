@@ -1,0 +1,65 @@
+{
+  "code": 0,
+  "msg": "",
+  "data": [
+    {
+      "title": "主页",
+      "icon": "layui-icon-home",
+      "list": [
+        {
+          "title": "控制台",
+          "jump": "/"
+        },
+        {
+          "name": "homepage1",
+          "title": "主页一",
+          "jump": "home/homepage1"
+        },
+        {
+          "name": "homepage2",
+          "title": "主页二",
+          "jump": "home/homepage2"
+        }
+      ]
+    },
+    {
+      "name": "classify",
+      "title": "分类",
+      "icon": "layui-icon-home",
+      "list": [{
+          "name": "classifyAdmin",
+          "title": "分类管理",
+          "jump": "home/homepage1"
+        }
+      ]
+    },{
+      "name": "speechcraft",
+      "title": "话术",
+      "icon": "layui-icon-home",
+      "list": [{
+        "name": "speechcraftAdmin",
+        "title": "话术管理",
+        "jump": "home/homepage1"
+      }
+      ]
+    },{
+      "name": "attribute",
+      "title": "精灵属性",
+      "icon": "layui-icon-home",
+      "list": [{
+        "name": "personalAttribute",
+        "title": "个人属性",
+        "jump": "home/homepage1"
+      },{
+        "name": "naturalAttribute",
+        "title": "自然属性",
+        "jump": "home/homepage1"
+      },{
+        "name": "socialAttribute",
+        "title": "社会属性",
+        "jump": "home/homepage1"
+      }
+      ]
+    }
+  ]
+}

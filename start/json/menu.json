@@ -1,0 +1,63 @@
+{
+  "code": 200,
+  "msg": "",
+  "data": [
+    {
+      "name": "classify",
+      "title": "分类",
+      "icon": "layui-icon-home",
+      "list": [{
+          "name": "classifyAdmin",
+          "title": "分类管理",
+          "jump": "classify/list"
+        }
+      ]
+    },{
+      "name": "script",
+      "title": "话术",
+      "icon": "layui-icon-home",
+      "list": [{
+        "name": "scriptAdmin",
+        "title": "话术管理",
+        "jump": "script/list"
+      },{
+        "name": "sceneAdmin",
+        "title": "场景管理",
+        "jump": "script/scene/list"
+      },{
+        "name": "categoryAdmin",
+        "title": "内容分类管理",
+        "jump": "script/category/list"
+      }
+      ]
+    },{
+      "name": "attribute",
+      "title": "精灵属性",
+      "icon": "layui-icon-home",
+      "list": [{
+        "name": "personalAttribute",
+        "title": "个人属性",
+        "jump": "attribute/personalAttribute/list"
+      },{
+        "name": "naturalAttribute",
+        "title": "自然属性",
+        "jump": "attribute/naturalAttribute/list"
+      },{
+        "name": "socialAttribute",
+        "title": "社会属性",
+        "jump": "attribute/socialAttribute/list"
+      }
+      ]
+    },{
+      "name": "admin",
+      "title": "成员管理",
+      "icon": "layui-icon-home",
+      "list": [{
+        "name": "admin",
+        "title": "成员管理",
+        "jump": "user/administrators/list"
+      }
+      ]
+    }
+  ]
+}
